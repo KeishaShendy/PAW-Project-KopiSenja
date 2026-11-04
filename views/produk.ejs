@@ -1,0 +1,53 @@
+<!-- File: views/produk.ejs -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Menu - Kopi Senja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+    
+    <!-- Navbar (Link Caption Generator Dihapus) -->
+    <nav class="bg-[#0f172a] text-gray-300 p-4 shadow-md">
+        <div class="container mx-auto flex gap-6 px-4 text-sm font-medium">
+            <a href="/" class="hover:text-white transition">Dasbor</a>
+            <a href="/produk" class="text-white font-bold border-b-2 border-white pb-1">Etalase Menu</a>
+        </div>
+    </nav>
+
+    <!-- Header Judul -->
+    <div class="text-center mt-12 mb-10">
+        <p class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">UMKM KOPI SENJA</p>
+        <h1 class="text-3xl font-bold text-gray-800 mb-3">Katalog Menu</h1>
+        <p class="text-gray-500 text-sm">Pilih menu kopi senja untuk dibuatkan caption promosinya secara otomatis.</p>
+    </div>
+
+    <!-- Grid Produk 4 Kolom -->
+    <div class="container mx-auto px-6 mb-20 max-w-6xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <% menus.forEach(menu => { %>
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 p-5 flex flex-col border border-gray-100">
+                <div class="w-full h-48 bg-gray-100 rounded-xl mb-4 overflow-hidden">
+                    <img src="<%= menu.gambar %>" alt="<%= menu.nama %>" class="w-full h-full object-cover">
+                </div>
+                
+                <p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-1"><%= menu.kategori %></p>
+                <h2 class="text-lg font-bold text-gray-800 mb-3"><%= menu.nama %></h2>
+                
+                <p class="text-xl font-extrabold text-emerald-500 mb-1">Rp <%= menu.harga.toLocaleString('id-ID') %></p>
+                <p class="text-xs text-red-500 mb-5 font-medium">Stok: <%= menu.stok %> cup</p>
+                
+                <button class="mt-auto w-full bg-[#2563eb] hover:bg-blue-700 text-white text-sm font-semibold py-2.5 rounded-lg transition duration-200 shadow-sm">
+                    Buat Caption Promosi
+                </button>
+            </div>
+            <% }) %>
+
+        </div>
+    </div>
+
+</body>
+</html>

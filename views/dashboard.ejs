@@ -1,0 +1,33 @@
+<!-- File: views/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasbor - Kopi Senja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+    
+    <!-- Navbar (Link Caption Generator Dihapus) -->
+    <nav class="bg-[#0f172a] text-gray-300 p-4 shadow-md">
+        <div class="container mx-auto flex gap-6 px-4 text-sm font-medium">
+            <a href="/" class="text-white font-bold border-b-2 border-white pb-1">Dasbor</a>
+            <a href="/produk" class="hover:text-white transition">Etalase Menu</a>
+        </div>
+    </nav>
+
+    <!-- Konten Welcome -->
+    <div class="container mx-auto px-6 mt-16 max-w-4xl">
+        <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Sistem Manajemen Menu</h1>
+            <p class="text-gray-500 mb-8 max-w-lg mx-auto">Selamat datang di Dasbor Admin Kopi Senja. Kelola katalog menu Anda dan hasilkan teks promosi media sosial secara instan berbasis AI.</p>
+            
+            <a href="/produk" class="inline-block bg-[#0f172a] hover:bg-slate-800 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-md">
+                Buka Etalase Menu
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
