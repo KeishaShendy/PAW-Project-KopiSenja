@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Menu Kopi Senja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-lg">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Ubah Data Menu</h2>
+        <form id="formEdit" class="flex flex-col gap-4">
+            <input type="hidden" id="menuId" value="<%= menu.id %>">
+            <label class="text-xs font-bold text-gray-500 uppercase">Kategori</label>
+            <input type="text" id="kategori" value="<%= menu.kategori %>" class="border p-2 rounded" required>
+            <label class="text-xs font-bold text-gray-500 uppercase">Nama Menu</label>
+            <input type="text" id="nama" value="<%= menu.nama %>" class="border p-2 rounded" required>
+            <label class="text-xs font-bold text-gray-500 uppercase">Harga</label>
+            <input type="number" id="harga" value="<%= menu.harga %>" class="border p-2 rounded" required>
+            <label class="text-xs font-bold text-gray-500 uppercase">Stok</label>
+            <input type="number" id="stok" value="<%= menu.stok %>" class="border p-2 rounded" required>
+            <label class="text-xs font-bold text-gray-500 uppercase">URL Gambar</label>
+            <input type="text" id="gambar" value="<%= menu.gambar %>" class="border p-2 rounded" required>
+            <div class="flex justify-end gap-2 mt-4">
+                <a href="/produk" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</a>
+                <button type="submit" class="bg-amber-500 text-white px-4 py-2 rounded hover:bg-amber-600">Perbarui</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('formEdit').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('menuId').value;
+            const data = {
+                kategori: document.getElementById('kategori').value,
+                nama: document.getElementById('nama').value,
+                harga: document.getElementById('harga').value,
+                stok: document.getElementById('stok').value,
+                gambar: document.getElementById('gambar').value
+            };
+            const res = await fetch(`/api/produk/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if(res.ok) window.location.href = '/produk';
+        });
+    </script>
+</body>
+</html>
