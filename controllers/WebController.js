@@ -1,4 +1,5 @@
 const ProductModel = require('../models/ProductModel');
+const HistoryModel = require('../models/HistoryModel');
 
 const renderDashboard = (req, res) => res.render('dashboard');
 
@@ -14,4 +15,11 @@ const renderEdit = async (req, res) => {
     res.render('edit', { menu });
 };
 
-module.exports = { renderDashboard, renderProduk, renderTambah, renderEdit };
+const renderRiwayat = (req, res) => {
+    const histories = HistoryModel.getAll();
+    res.render('riwayat', { histories });
+};
+
+const renderPengaturan = (req, res) => res.render('pengaturan');
+
+module.exports = { renderDashboard, renderProduk, renderTambah, renderEdit, renderRiwayat, renderPengaturan };

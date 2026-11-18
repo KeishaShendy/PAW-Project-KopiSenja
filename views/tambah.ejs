@@ -1,40 +1,79 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Menu Kopi Senja</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8"><title>Tambah Menu - Kopi Senja</title><script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-lg">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Tambah Menu Baru</h2>
-        <form id="formTambah" class="flex flex-col gap-4">
-            <input type="text" id="kategori" placeholder="Kategori (Misal: Kopi Susu)" class="border p-2 rounded" required>
-            <input type="text" id="nama" placeholder="Nama Menu" class="border p-2 rounded" required>
-            <input type="number" id="harga" placeholder="Harga (Misal: 25000)" class="border p-2 rounded" required>
-            <input type="number" id="stok" placeholder="Stok" class="border p-2 rounded" required>
-            <input type="text" id="gambar" placeholder="URL Gambar" class="border p-2 rounded" required>
-            <div class="flex justify-end gap-2 mt-4">
-                <a href="/produk" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</a>
-                <button type="submit" class="bg-[#2563eb] text-white px-4 py-2 rounded hover:bg-blue-700">Simpan</button>
-            </div>
-        </form>
-    </div>
+<body class="bg-gray-50 text-gray-800 font-sans flex h-screen overflow-hidden">
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-[#111827] text-white flex flex-col h-full shadow-lg z-10 flex-shrink-0">
+        <div class="p-6 flex items-center gap-3">
+            <div class="bg-white text-[#111827] font-extrabold text-xl p-2 rounded-md">KS</div>
+            <h1 class="text-xl font-bold tracking-wide">Kopi Senja</h1>
+        </div>
+        <nav class="flex-1 mt-4 px-4 space-y-2">
+            <a href="/" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Dasbor</a>
+            <a href="/produk" class="block px-4 py-3 rounded-lg bg-gray-800 text-white font-semibold transition shadow-inner">Etalase Menu</a>
+            <a href="/riwayat" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Riwayat Promo</a>
+            <a href="/pengaturan" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Pengaturan</a>
+        </nav>
+    </aside>
+
+    <!-- KONTEN -->
+    <main class="flex-1 h-full overflow-y-auto p-10">
+        <a href="/produk" class="text-sm text-gray-500 font-bold hover:text-gray-800 mb-6 inline-block">← Kembali ke Etalase</a>
+        
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-w-2xl">
+            <h2 class="text-2xl font-bold mb-8 text-gray-900">Tambah Menu Baru</h2>
+            
+            <form id="formTambah" class="flex flex-col gap-5">
+                <div class="grid grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Nama Menu</label>
+                        <input type="text" id="nama" placeholder="Cth: Iced Aren Latte" class="w-full border p-3 rounded-xl bg-gray-50 focus:border-blue-500 focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Kategori</label>
+                        <input type="text" id="kategori" placeholder="Kopi Susu" class="w-full border p-3 rounded-xl bg-gray-50 focus:border-blue-500 focus:outline-none" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Harga (Rp)</label>
+                        <input type="number" id="harga" placeholder="25000" class="w-full border p-3 rounded-xl bg-gray-50 focus:border-blue-500 focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Stok (Cup/Porsi)</label>
+                        <input type="number" id="stok" placeholder="50" class="w-full border p-3 rounded-xl bg-gray-50 focus:border-blue-500 focus:outline-none" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">URL Foto Produk</label>
+                    <input type="text" id="gambar" placeholder="https://..." class="w-full border p-3 rounded-xl bg-gray-50 focus:border-blue-500 focus:outline-none" required>
+                </div>
+
+                <div class="flex justify-end gap-3 mt-4 pt-4 border-t border-gray-100">
+                    <a href="/produk" class="px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition">Batal</a>
+                    <button type="submit" class="bg-[#111827] text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-md">Simpan Menu</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
     <script>
         document.getElementById('formTambah').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const data = {
-                kategori: document.getElementById('kategori').value,
-                nama: document.getElementById('nama').value,
-                harga: document.getElementById('harga').value,
-                stok: document.getElementById('stok').value,
-                gambar: document.getElementById('gambar').value
-            };
             const res = await fetch('/api/produk', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    kategori: document.getElementById('kategori').value,
+                    nama: document.getElementById('nama').value,
+                    harga: document.getElementById('harga').value,
+                    stok: document.getElementById('stok').value,
+                    gambar: document.getElementById('gambar').value
+                })
             });
             if(res.ok) window.location.href = '/produk';
         });

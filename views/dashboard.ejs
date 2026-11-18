@@ -1,33 +1,58 @@
-<!-- File: views/dashboard.ejs -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasbor - Kopi Senja</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8"><title>Dasbor - Kopi Senja</title><script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 font-sans">
-    
-    <!-- Navbar (Link Caption Generator Dihapus) -->
-    <nav class="bg-[#0f172a] text-gray-300 p-4 shadow-md">
-        <div class="container mx-auto flex gap-6 px-4 text-sm font-medium">
-            <a href="/" class="text-white font-bold border-b-2 border-white pb-1">Dasbor</a>
-            <a href="/produk" class="hover:text-white transition">Etalase Menu</a>
+<body class="bg-gray-50 text-gray-800 font-sans flex h-screen overflow-hidden">
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-[#111827] text-white flex flex-col h-full shadow-lg z-10 flex-shrink-0">
+        <div class="p-6 flex items-center gap-3">
+            <div class="bg-white text-[#111827] font-extrabold text-xl p-2 rounded-md">KS</div>
+            <h1 class="text-xl font-bold tracking-wide">Kopi Senja</h1>
         </div>
-    </nav>
+        <nav class="flex-1 mt-4 px-4 space-y-2">
+            <a href="/" class="block px-4 py-3 rounded-lg bg-gray-800 text-white font-semibold transition shadow-inner">Dasbor</a>
+            <a href="/produk" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Etalase Menu</a>
+            <a href="/riwayat" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Riwayat Promo</a>
+            <a href="/pengaturan" class="block px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">Pengaturan</a>
+        </nav>
+    </aside>
 
-    <!-- Konten Welcome -->
-    <div class="container mx-auto px-6 mt-16 max-w-4xl">
-        <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
-            <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Sistem Manajemen Menu</h1>
-            <p class="text-gray-500 mb-8 max-w-lg mx-auto">Selamat datang di Dasbor Admin Kopi Senja. Kelola katalog menu Anda dan hasilkan teks promosi media sosial secara instan berbasis AI.</p>
-            
-            <a href="/produk" class="inline-block bg-[#0f172a] hover:bg-slate-800 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-md">
-                Buka Etalase Menu
-            </a>
+    <!-- KONTEN KANAN -->
+    <main class="flex-1 h-full overflow-y-auto p-10">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-1">Halo, Admin! 👋</h2>
+                <p class="text-gray-500 text-sm">Ringkasan aktivitas Kopi Senja hari ini.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="bg-white border px-4 py-2 rounded-full text-sm font-bold text-gray-600">18 Nov 2026</span>
+            </div>
         </div>
-    </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-blue-500 text-white rounded-2xl p-6 shadow-md">
+                <h3 class="text-sm font-semibold mb-2">Total Menu Tersedia</h3>
+                <p class="text-5xl font-bold mb-4">32</p>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">+3 menu baru bulan ini</span>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-sm text-gray-500 font-semibold mb-2">Caption AI Dihasilkan</h3>
+                <p class="text-5xl font-bold text-gray-800 mb-4">128</p>
+                <span class="text-emerald-500 text-xs font-bold flex items-center gap-1">↑ 12% dari minggu lalu</span>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-sm text-gray-500 font-semibold mb-2">Sisa Kuota API (Gemini)</h3>
+                <p class="text-5xl font-bold text-gray-800 mb-4">8,450</p>
+                <span class="text-gray-400 text-xs font-semibold">Batas bulanan: 10,000 requests</span>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm h-64 flex flex-col justify-center items-center">
+            <h3 class="w-full text-left font-bold text-gray-800 mb-auto">Aktivitas Generasi Promo Terakhir</h3>
+            <p class="text-gray-400 font-semibold">[Area Grafik / Chart]</p>
+            <div class="mt-auto"></div>
+        </div>
+    </main>
 </body>
 </html>
